@@ -1,4 +1,4 @@
-package com.pizterri.sfgdi.services;
+package com.pizterri.pets;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
