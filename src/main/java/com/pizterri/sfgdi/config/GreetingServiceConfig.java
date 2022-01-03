@@ -1,5 +1,7 @@
 package com.pizterri.sfgdi.config;
 
+import com.pizterri.sfgdi.repositories.EnglishGreetingRepository;
+import com.pizterri.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import com.pizterri.sfgdi.services.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,9 +17,13 @@ public class GreetingServiceConfig {
     }
 
     @Bean
+    EnglishGreetingRepository englishGreetingRepository(){
+        return new EnglishGreetingRepositoryImpl();
+    }
+    @Bean
     @Profile("EN")
-    I18nEnglishGreetingService i18nService(){
-        return new I18nEnglishGreetingService();
+    I18nEnglishGreetingService i18nService(EnglishGreetingRepository englishGreetingRepository){
+        return new I18nEnglishGreetingService(englishGreetingRepository);
     }
 
     @Bean
