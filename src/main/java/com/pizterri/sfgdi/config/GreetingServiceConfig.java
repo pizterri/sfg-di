@@ -1,5 +1,7 @@
 package com.pizterri.sfgdi.config;
 
+import com.pizterri.pets.CatPetService;
+import com.pizterri.pets.DogPetService;
 import com.pizterri.pets.PetService;
 import com.pizterri.pets.PetServiceFactory;
 import com.pizterri.sfgdi.repositories.EnglishGreetingRepository;
@@ -30,6 +32,20 @@ public class GreetingServiceConfig {
         return petServiceFactory.getPetService("cat");
     }
 
+    /*
+    @Bean
+    @Profile("cat")
+    CatPetService catPetService(){
+        return new CatPetService();
+    }
+
+
+    @Bean
+    @Profile({"dog", "default"})
+    DogPetService dogPetService(){
+        return new DogPetService();
+    }
+*/
 
     @Bean("i18nService")
     @Profile("ES")

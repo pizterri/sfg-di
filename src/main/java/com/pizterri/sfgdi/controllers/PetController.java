@@ -9,10 +9,10 @@ import org.springframework.stereotype.Controller;
  */
 
 @Controller
-public class PetController{
+public class PetController {
 
     private final PetService petService;
-
+//@Qualifier("PetServiceImpl")
     public PetController(PetService petService) {
         this.petService = petService;
     }
