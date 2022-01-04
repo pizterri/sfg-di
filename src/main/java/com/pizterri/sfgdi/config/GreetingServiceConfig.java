@@ -7,11 +7,9 @@ import com.pizterri.pets.PetServiceFactory;
 import com.pizterri.sfgdi.repositories.EnglishGreetingRepository;
 import com.pizterri.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import com.pizterri.sfgdi.services.*;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.*;
 
+@ImportResource("classpath:sfgdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
 
@@ -68,10 +66,13 @@ public class GreetingServiceConfig {
     PrimaryGreetingService primaryGreetingService(){
         return new PrimaryGreetingService();
     }
+
+    /*
     @Bean
     ConstructorGreetingService constructorGreetingService(){
         return new ConstructorGreetingService();
     }
+     */
 
     @Bean
     PropertyInjectedGreetingService propertyInjectedGreetingService(){
