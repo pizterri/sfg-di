@@ -1,9 +1,23 @@
 spring:
   profiles:
-    active: cat, EN, dev
+    active:
+      - cat
+      - EN
+      - prod
 
 com:
   pizterri:
     username: YmlUsername
     password: YmlPassword
     jdbcurl: YmlUrlforDB
+
+#--- is interpreted as new config file.
+#Spring:Profiles is the same as setting the file name
+---
+spring:
+  profiles: prod
+com:
+  pizterri:
+    username: ProdUsername
+    password: ProdPassword
+    jdbcurl: ProdPwd
