@@ -1,5 +1,6 @@
 package com.pizterri.sfgdi;
 
+import com.pizterri.sfgdi.config.SfgConfiguration;
 import com.pizterri.sfgdi.controllers.*;
 import com.pizterri.sfgdi.datasource.FakeDataSource;
 import com.pizterri.sfgdi.services.PrototypeBean;
@@ -60,6 +61,12 @@ public class SfgDiApplication {
 		System.out.println(fakeDataSource.getUsername());
 		System.out.println(fakeDataSource.getPassword());
 		System.out.println(fakeDataSource.getJdbcurl());
+
+		System.out.println("------Config Props Bean");
+		SfgConfiguration sfgConfiguration = ctx.getBean(SfgConfiguration.class);
+		System.out.println(sfgConfiguration.getUsername());
+		System.out.println(sfgConfiguration.getPassword());
+		System.out.println(sfgConfiguration.getJdbcurl());
 
 
 	}

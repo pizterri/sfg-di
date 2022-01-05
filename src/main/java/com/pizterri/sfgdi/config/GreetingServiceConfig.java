@@ -19,10 +19,12 @@ public class GreetingServiceConfig {
     @Bean
     FakeDataSource fakeDataSource(@Value("${com.pizterri.username}") String username,
                                   @Value("${com.pizterri.password}") String password,
-                                  @Value("${com.pizterri.jdbcurl}") String jdbcurl){
+                                  @Value("${com.pizterri.jdbcurl}") String jdbcurl,
+                                  SfgConfiguration sfgConfiguration){
         FakeDataSource fakeDataSource = new FakeDataSource();
         fakeDataSource.setUsername(username);
-        fakeDataSource.setPassword(password);
+        // Example to take the password from the sfgConfiguration Bean
+        fakeDataSource.setPassword(sfgConfiguration.getPassword());
         fakeDataSource.setJdbcurl(jdbcurl);
 
         return fakeDataSource;
