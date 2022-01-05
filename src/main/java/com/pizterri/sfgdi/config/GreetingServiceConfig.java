@@ -4,14 +4,30 @@ import com.pizterri.pets.CatPetService;
 import com.pizterri.pets.DogPetService;
 import com.pizterri.pets.PetService;
 import com.pizterri.pets.PetServiceFactory;
+import com.pizterri.sfgdi.datasource.FakeDataSource;
 import com.pizterri.sfgdi.repositories.EnglishGreetingRepository;
 import com.pizterri.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import com.pizterri.sfgdi.services.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 
+@PropertySource("classpath:datasource.properties")
 @ImportResource("classpath:sfgdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
+
+    @Bean
+    FakeDataSource fakeDataSource(@Value("${com.pizterri.username}") String username,
+                                  @Value("${com.pizterri.password}") String password,
+                                  @Value("${com.pizterri.jdbcurl}") String jdbcurl){
+        FakeDataSource fakeDataSource = new FakeDataSource();
+        fakeDataSource.setUsername(username);
+        fakeDataSource.setPassword(password);
+        fakeDataSource.setJdbcurl(jdbcurl);
+
+        return fakeDataSource;
+
+    }
 
     @Bean
     PetServiceFactory petServiceFactory(){
