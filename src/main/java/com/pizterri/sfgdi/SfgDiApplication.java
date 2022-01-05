@@ -1,15 +1,18 @@
 package com.pizterri.sfgdi;
 
 import com.pizterri.sfgdi.config.SfgConfiguration;
+import com.pizterri.sfgdi.config.SfgConstructorConfig;
 import com.pizterri.sfgdi.controllers.*;
 import com.pizterri.sfgdi.datasource.FakeDataSource;
 import com.pizterri.sfgdi.services.PrototypeBean;
 import com.pizterri.sfgdi.services.SingletonBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
+@EnableConfigurationProperties(SfgConstructorConfig.class)
 @ComponentScan(basePackages = {"com.pizterri.sfgdi", "com.pizterri.pets"})
 @SpringBootApplication
 public class SfgDiApplication {
@@ -67,6 +70,12 @@ public class SfgDiApplication {
 		System.out.println(sfgConfiguration.getUsername());
 		System.out.println(sfgConfiguration.getPassword());
 		System.out.println(sfgConfiguration.getJdbcurl());
+
+		System.out.println("------Constructor Binding Bean");
+		SfgConstructorConfig sfgConstructorConfig = ctx.getBean(SfgConstructorConfig.class);
+		System.out.println(sfgConstructorConfig.getUsername());
+		System.out.println(sfgConstructorConfig.getPassword());
+		System.out.println(sfgConstructorConfig.getJdbcurl());
 
 
 	}
