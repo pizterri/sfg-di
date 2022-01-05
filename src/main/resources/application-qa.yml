@@ -1,0 +1,5 @@
+com:
+  pizterri:
+    username: YmlUsername
+    password: YmlPassword
+    jdbcurl: YmlQAUrlforDB
